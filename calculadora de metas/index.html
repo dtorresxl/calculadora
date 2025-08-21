@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Calculadora de Metas Pessoais</title>
+  <link rel="stylesheet" href="style.css">
+   <link rel="stylesheet" href="script.js">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
+</head>
+<body>
+  <main class="container">
+    <h1>Calculadora de Metas Pessoais</h1>
+    <form id="metaForm" novalidate>
+      <div class="input-group">
+        <label for="valorMeta">Valor da Meta (R$):</label>
+        <input type="text" id="valorMeta" placeholder="Ex: 1.000,00" autocomplete="off" required />
+      </div>
+
+      <div class="input-group">
+        <label for="prazo">Prazo para alcançar:</label>
+        <input type="number" id="prazo" min="1" step="1" placeholder="Ex: 30" required />
+      </div>
+
+      <div class="input-group">
+        <label for="tipoPrazo">Tipo do prazo:</label>
+        <select id="tipoPrazo" required>
+          <option value="dias">Dias</option>
+          <option value="semanas">Semanas</option>
+        </select>
+      </div>
+
+      <button type="submit" aria-label="Calcular metas">Calcular</button>
+    </form>
+
+    <section class="resultado" id="resultado" aria-live="polite"></section>
+  </main>
+</body>
+</html>

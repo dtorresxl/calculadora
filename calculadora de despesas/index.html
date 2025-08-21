@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Despesas</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="script.js">
+</head>
+<body>
+
+    <h1>Controle de Despesas</h1>
+    <form id="form">
+        <div>
+            <input type="number" id="valorTotal" placeholder="Seu Total" required>
+        </div>
+        <div class="input-group">
+            <input type="text" id="descricao" placeholder="Descrição" required>
+            <input type="number" id="valor" placeholder="Valor" required>
+        </div>
+        <button type="submit">Adicionar Despesa</button>
+    </form>
+
+    <div id="despesas">
+        <h2>Minhas Despesas</h2>
+        <div id="lista-despesas"></div>
+        <h3 id="total">Total: R$ 0,00</h3>
+        <h3 id="sobrando">Sobrou: R$ 0,00</h3>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
