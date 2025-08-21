@@ -2,40 +2,35 @@
     const form = document.getElementById('metaForm');
     const resultadoDiv = document.getElementById('resultado');
 
-    // Função para formatar número com pontos a cada 3 dígitos e vírgula para decimais
     function formatarValor(valor) {
-      // Remove tudo que não for número ou vírgula
+      
       valor = valor.replace(/[^\d,]/g, '');
 
-      // Troca vírgula por ponto para manipulação
+     
       valor = valor.replace(/,/g, '.');
 
-      // Se tiver mais de um ponto, remove os extras
+      
       const partes = valor.split('.');
       if (partes.length > 2) {
         valor = partes[0] + '.' + partes.slice(1).join('');
       }
 
-      // Se tiver ponto (decimal), separa inteiro e decimal
+      
       let inteiro = valor;
       let decimal = '';
       if (valor.indexOf('.') !== -1) {
         const split = valor.split('.');
         inteiro = split[0];
-        decimal = split[1].slice(0,2); // pega até 2 casas decimais
+        decimal = split[1].slice(0,2);
       }
 
-      // Remove zeros à esquerda
       inteiro = inteiro.replace(/^0+(?=\d)/, '');
 
-      // Formata o inteiro com pontos a cada 3 dígitos
       inteiro = inteiro.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
 
-      // Junta inteiro e decimal com vírgula
       return decimal.length > 0 ? inteiro + ',' + decimal : inteiro;
     }
 
-    // Evento para formatar enquanto digita
     valorMetaInput.addEventListener('input', e => {
       let cursorPos = valorMetaInput.selectionStart;
       let oldLength = valorMetaInput.value.length;
@@ -44,7 +39,6 @@
 
       valorMetaInput.value = formatted;
 
-      // Ajusta cursor para ficar no lugar correto
       let newLength = formatted.length;
       cursorPos = cursorPos + (newLength - oldLength);
       valorMetaInput.setSelectionRange(cursorPos, cursorPos);
@@ -53,7 +47,6 @@
     form.addEventListener('submit', e => {
       e.preventDefault();
 
-      // Para cálculo, converte valor formatado para número float
       let valorMetaStr = valorMetaInput.value.replace(/\./g, '').replace(',', '.');
       const valorMeta = parseFloat(valorMetaStr);
 
@@ -80,7 +73,6 @@
         valorPorDia = valorPorSemana / 7;
       }
 
-      // Formata os valores de saída com separador de milhar e vírgula decimal
       function formatarSaida(num) {
         return num.toFixed(2).replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, '.');
       }
@@ -98,4 +90,5 @@
       `;
 
       resultadoDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
     });
